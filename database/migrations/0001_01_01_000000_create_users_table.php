@@ -1,0 +1,80 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('daftar_lingkungan', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_lingkungan');
+            $table->string('wilayah');
+            $table->text('keterangan')->nullable();
+            $table->boolean('status')->default(true);
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('no_ID')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('nama_lengkap');
+            $table->string('tempat_lahir');
+            $table->string('tanggal_lahir');
+            $table->enum('jenis_kelamin', ['Pria', 'Wanita']);
+            $table->string('alamat');
+            $table->unsignedBigInteger('daftar_lingkungan_id');
+            $table->string('no_telp')->unique();
+            $table->enum('warga_negara', ['WNI', 'WNA']);
+            $table->unsignedBigInteger('role_group_id');
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->boolean('active')->default(true);
+            $table->enum('status', ['Active', 'Not Active'])->default('Active');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('otp')->nullable();
+            $table->timestamp('otp_expired_at')->nullable();
+            $table->rememberToken();
+            $table->timestamp('last_seen')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');
+        });
+
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
+            $table->string('email')->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
+
+        Schema::create('sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload');
+            $table->integer('last_activity')->index();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('users');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('sessions');
+    }
+};

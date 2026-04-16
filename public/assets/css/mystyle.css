@@ -1,0 +1,122 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Bagian Atas (Hitam) */
+.kp-header-top {
+    background-color: #000000;
+    padding: 15px 0;
+    color: white;
+}
+
+.brand-logo {
+    font-weight: 900;
+    font-size: 24px;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+.brand-logo span {
+    color: #ff4a00;
+}
+
+.slogan {
+    font-size: 10px;
+    color: #ccc;
+    display: block;
+    text-transform: uppercase;
+    margin-top: -5px;
+}
+
+/* Search Bar */
+.search-container {
+    background: #252525;
+    border-radius: 20px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-container input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 14px;
+    width: 100%;
+}
+
+.search-container input:focus {
+    outline: none;
+}
+
+.search-container i {
+    color: #888;
+}
+
+/* Navigasi Desktop (Hitam) */
+.kp-nav-bg {
+    background-color: #000000;
+    border-top: 1px solid #333;
+}
+
+.nav-link {
+    color: #ffffff !important;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 10px 12px !important;
+}
+
+.nav-link:hover {
+    color: #ff4a00 !important;
+}
+
+/* Offcanvas / Burger Menu Style */
+.offcanvas {
+    background-color: #000;
+    color: #fff;
+}
+
+.offcanvas .nav-link {
+    font-size: 16px;
+    border-bottom: 1px solid #222;
+    padding: 15px !important;
+}
+
+.btn-close-white {
+    filter: invert(1) grayscale(1) brightness(2);
+}
+
+/* Trending Bar */
+.trending-bar {
+    background: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 13px;
+}
+
+.trending-title {
+    color: #ff4a00;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.trending-item {
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 991px) {
+    .brand-logo {
+        font-size: 20px;
+    }
+
+    .slogan {
+        font-size: 8px;
+    }
+}
