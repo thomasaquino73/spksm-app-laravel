@@ -47,5 +47,9 @@ class AppServiceProvider extends ServiceProvider
                 'alamat' => $alamat,
             ]);
         });
+
+        if ($this->app->environment('production')) {
+        \URL::forceScheme('https');
+        }
     }
 }
