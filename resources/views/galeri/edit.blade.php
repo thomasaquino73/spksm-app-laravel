@@ -280,7 +280,7 @@
                     if (saveAndNew) {
                         btn.html('<i class="fa fa-plus-circle me-1"></i> Save and Create New');
                     } else {
-                        btn.html('<i class="fa fa-upload me-1"></i> Save and Close');
+                        btn.html('<i class="fa fa-upload me-1"></i> Update');
                     }
                     btn.prop('disabled', false);
                 },
